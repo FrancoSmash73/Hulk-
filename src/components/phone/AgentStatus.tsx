@@ -112,13 +112,16 @@ export default function AgentStatusPanel({
           />
           <div>
             <div
-              className="text-xs font-bold tracking-widest"
-              style={{ color: statusColor }}
+              className="text-xs font-black tracking-widest"
+              style={{
+                color: statusColor,
+                textShadow: `0 0 6px ${statusColor}88, 0 0 12px ${statusColor}44`,
+              }}
             >
               {statusLabel}
             </div>
             {!isRegistered && (
-              <div className="text-xs" style={{ color: "#6b7280" }}>
+              <div className="text-xs font-bold" style={{ color: "#8aa0bb" }}>
                 SIP Unregistered
               </div>
             )}
@@ -166,8 +169,8 @@ export default function AgentStatusPanel({
           }}
         >
           <div
-            className="col-span-2 text-xs font-bold tracking-widest mb-1"
-            style={{ color: "var(--hulk-purple-light)" }}
+            className="col-span-2 text-xs font-black tracking-widest mb-1"
+            style={{ color: "var(--hulk-purple-light)", textShadow: "0 0 8px var(--hulk-purple-light)" }}
           >
             SELECT PAUSE REASON
           </div>
@@ -180,21 +183,23 @@ export default function AgentStatusPanel({
               }}
               className="rounded-lg px-3 py-2 text-xs font-bold flex items-center gap-2 transition-all"
               style={{
-                background: "rgba(123,45,139,0.2)",
-                border: "1px solid #4a0e5c",
-                color: "#d1d5db",
+                background: "rgba(123,45,139,0.25)",
+                border: "1px solid #6a2e8c",
+                color: "#e8d0ff",
               }}
               onMouseEnter={(e) => {
                 (e.currentTarget as HTMLButtonElement).style.background =
-                  "rgba(123,45,139,0.4)";
+                  "rgba(150,60,180,0.4)";
                 (e.currentTarget as HTMLButtonElement).style.borderColor =
                   "var(--hulk-purple-light)";
+                (e.currentTarget as HTMLButtonElement).style.color = "#fff";
               }}
               onMouseLeave={(e) => {
                 (e.currentTarget as HTMLButtonElement).style.background =
-                  "rgba(123,45,139,0.2)";
+                  "rgba(123,45,139,0.25)";
                 (e.currentTarget as HTMLButtonElement).style.borderColor =
-                  "#4a0e5c";
+                  "#6a2e8c";
+                (e.currentTarget as HTMLButtonElement).style.color = "#e8d0ff";
               }}
             >
               <span>{icon}</span>
@@ -215,16 +220,15 @@ export default function AgentStatusPanel({
           }}
         >
           <div
-            className="text-xs font-bold tracking-widest text-glow-green"
-            style={{ color: "var(--hulk-green)" }}
+            className="text-xs font-black tracking-widest text-glow-green"
           >
             ⚡ INCOMING CALL
           </div>
-          <div className="text-lg font-bold" style={{ color: "#fff" }}>
+          <div className="text-lg font-black" style={{ color: "#fff", textShadow: "0 0 10px rgba(255,255,255,0.3)" }}>
             {incomingCallInfo.name || incomingCallInfo.number}
           </div>
           {incomingCallInfo.name && (
-            <div className="text-sm" style={{ color: "#9ca3af" }}>
+            <div className="text-sm font-bold" style={{ color: "#c0d0e0" }}>
               {incomingCallInfo.number}
             </div>
           )}
@@ -242,23 +246,23 @@ export default function AgentStatusPanel({
         >
           <div className="flex items-center justify-between">
             <div
-              className="text-xs font-bold tracking-widest"
-              style={{ color: "#ffaa00" }}
+              className="text-xs font-black tracking-widest"
+              style={{ color: "#ffcc00", textShadow: "0 0 6px #ffaa00" }}
             >
               {currentCall.direction === "inbound" ? "📥 INBOUND" : "📤 OUTBOUND"}
             </div>
             <div
-              className="text-sm font-mono font-bold"
-              style={{ color: "#ffaa00" }}
+              className="text-sm font-mono font-black"
+              style={{ color: "#ffcc00", textShadow: "0 0 8px #ffaa00" }}
             >
               {formatDuration(currentCall.duration)}
             </div>
           </div>
-          <div className="text-base font-bold" style={{ color: "#fff" }}>
+          <div className="text-base font-black" style={{ color: "#fff", textShadow: "0 0 8px rgba(255,255,255,0.2)" }}>
             {currentCall.name || currentCall.number}
           </div>
           {currentCall.name && (
-            <div className="text-sm" style={{ color: "#9ca3af" }}>
+            <div className="text-sm font-bold" style={{ color: "#c0d0e0" }}>
               {currentCall.number}
             </div>
           )}

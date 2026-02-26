@@ -7,14 +7,21 @@
   --hulk-green-glow: #39ff14;
   --hulk-purple: #7b2d8b;
   --hulk-purple-dark: #4a0e5c;
-  --hulk-purple-light: #b44fd4;
+  --hulk-purple-light: #cc66ff;
   --hulk-rage: #ff4500;
   --hulk-bg: #0a0a0f;
   --hulk-panel: #0d1117;
   --hulk-card: #111827;
-  --hulk-border: #1f2937;
-  --hulk-text: #e2e8f0;
-  --hulk-muted: #6b7280;
+  --hulk-border: #2d3748;
+  --hulk-text: #f0f6ff;
+  --hulk-muted: #94a3b8;
+}
+
+/* Global text rendering — sharper, higher contrast */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 /* Anime-style glow effects */
@@ -123,27 +130,43 @@
   box-shadow: 0 0 5px var(--hulk-purple), inset 0 0 5px rgba(123, 45, 139, 0.2);
 }
 
-/* Anime text glow */
+/* Anime text glow — stronger, more visible */
 .text-glow-green {
-  text-shadow: 0 0 5px var(--hulk-green), 0 0 10px var(--hulk-green-dark);
+  color: #00ff41;
+  text-shadow:
+    0 0 4px #fff,
+    0 0 8px var(--hulk-green),
+    0 0 18px var(--hulk-green),
+    0 0 30px var(--hulk-green-dark);
 }
 
 .text-glow-purple {
-  text-shadow: 0 0 5px var(--hulk-purple-light), 0 0 10px var(--hulk-purple);
+  color: #cc66ff;
+  text-shadow:
+    0 0 4px #fff,
+    0 0 8px var(--hulk-purple-light),
+    0 0 18px var(--hulk-purple-light),
+    0 0 30px var(--hulk-purple);
 }
 
 .text-glow-rage {
-  text-shadow: 0 0 5px var(--hulk-rage), 0 0 10px #ff6600;
+  color: #ff6633;
+  text-shadow:
+    0 0 4px #fff,
+    0 0 8px var(--hulk-rage),
+    0 0 18px var(--hulk-rage),
+    0 0 30px #ff6600;
 }
 
 /* Hulk button styles */
 .btn-hulk {
-  background: linear-gradient(135deg, #00cc33, #007722);
+  background: linear-gradient(135deg, #00dd33, #006622);
   border: 1px solid var(--hulk-green);
-  color: #000;
+  color: #001a00;
   font-weight: 900;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.12em;
+  text-shadow: 0 1px 0 rgba(0,255,65,0.4);
   transition: all 0.15s ease;
   position: relative;
   overflow: hidden;
@@ -178,22 +201,34 @@
   background: linear-gradient(135deg, #cc3300, #881100);
   border: 1px solid var(--hulk-rage);
   color: #fff;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  text-shadow: 0 0 6px rgba(255,100,50,0.6), 0 1px 0 rgba(0,0,0,0.5);
 }
 
 .btn-rage:hover {
   animation: hulk-rage-pulse 0.8s infinite;
   background: linear-gradient(135deg, #ff4500, #cc3300);
+  color: #fff;
+  text-shadow: 0 0 10px #fff, 0 0 20px var(--hulk-rage);
 }
 
 .btn-purple {
-  background: linear-gradient(135deg, #7b2d8b, #4a0e5c);
+  background: linear-gradient(135deg, #8833aa, #4a0e5c);
   border: 1px solid var(--hulk-purple-light);
-  color: #fff;
+  color: #f0d0ff;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  text-shadow: 0 0 6px rgba(200,100,255,0.5), 0 1px 0 rgba(0,0,0,0.5);
 }
 
 .btn-purple:hover {
   animation: purple-glow 1s infinite;
-  background: linear-gradient(135deg, #9b3dab, #6b1e7c);
+  background: linear-gradient(135deg, #aa44cc, #6b1e7c);
+  color: #fff;
+  text-shadow: 0 0 8px #fff, 0 0 16px var(--hulk-purple-light);
 }
 
 /* Anime-style panel */
@@ -245,9 +280,11 @@
 /* Keypad button */
 .keypad-btn {
   background: linear-gradient(135deg, #1a2332, #0f1923);
-  border: 1px solid #2d3748;
+  border: 1px solid #3d4f6a;
   color: var(--hulk-green);
   font-family: 'Courier New', monospace;
+  font-weight: 700;
+  text-shadow: 0 0 6px var(--hulk-green), 0 0 12px var(--hulk-green-dark);
   transition: all 0.1s ease;
   position: relative;
   overflow: hidden;
@@ -256,14 +293,16 @@
 .keypad-btn:hover {
   background: linear-gradient(135deg, #1f2d3d, #162030);
   border-color: var(--hulk-green);
-  box-shadow: 0 0 8px rgba(0, 255, 65, 0.4);
-  color: var(--hulk-green-glow);
+  box-shadow: 0 0 12px rgba(0, 255, 65, 0.5), inset 0 0 8px rgba(0,255,65,0.08);
+  color: #fff;
+  text-shadow: 0 0 6px #fff, 0 0 12px var(--hulk-green), 0 0 24px var(--hulk-green);
 }
 
 .keypad-btn:active {
   transform: scale(0.95);
   background: linear-gradient(135deg, #00cc33, #007722);
   color: #000;
+  text-shadow: none;
 }
 
 /* Scrollbar styling */
@@ -286,21 +325,26 @@
 
 /* Anime-style input */
 .hulk-input {
-  background: rgba(0, 0, 0, 0.6);
-  border: 1px solid #2d3748;
-  color: var(--hulk-green);
+  background: rgba(0, 0, 0, 0.7);
+  border: 1px solid #3d4f6a;
+  color: #00ff41;
   font-family: 'Courier New', monospace;
+  font-weight: 600;
+  text-shadow: 0 0 6px rgba(0,255,65,0.5);
   transition: all 0.2s ease;
 }
 
 .hulk-input:focus {
   outline: none;
   border-color: var(--hulk-green);
-  box-shadow: 0 0 8px rgba(0, 255, 65, 0.3);
+  box-shadow: 0 0 10px rgba(0, 255, 65, 0.4), inset 0 0 6px rgba(0,255,65,0.05);
+  text-shadow: 0 0 8px var(--hulk-green);
 }
 
 .hulk-input::placeholder {
-  color: #374151;
+  color: #4b5e7a;
+  text-shadow: none;
+  font-weight: 400;
 }
 
 /* Power animation */

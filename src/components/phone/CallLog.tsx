@@ -95,18 +95,18 @@ export default function CallLog({ entries, onCallBack }: CallLogProps) {
               {entry.name || entry.number}
             </div>
             {entry.name && (
-              <div className="text-xs truncate" style={{ color: "#6b7280" }}>
+              <div className="text-xs truncate" style={{ color: "#8aa0bb" }}>
                 {entry.number}
               </div>
             )}
             <div className="flex items-center gap-2 mt-0.5">
-              <span className="text-xs" style={{ color: "#4b5563" }}>
+              <span className="text-xs" style={{ color: "#7090a8" }}>
                 {formatDate(entry.timestamp)} {formatTime(entry.timestamp)}
               </span>
               {entry.duration > 0 && (
                 <>
                   <span style={{ color: "#374151" }}>·</span>
-                  <span className="text-xs" style={{ color: "#4b5563" }}>
+                  <span className="text-xs" style={{ color: "#7090a8" }}>
                     {formatDuration(entry.duration)}
                   </span>
                 </>

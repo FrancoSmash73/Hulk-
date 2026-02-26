@@ -68,7 +68,7 @@ export default function Home() {
           {/* Description */}
           <p
             className="text-base mb-8 leading-relaxed"
-            style={{ color: "#9ca3af", maxWidth: "400px" }}
+            style={{ color: "#c0cfe0", maxWidth: "400px" }}
           >
             A clean, open-source WebRTC softphone built for ViciDial AGC agents.
             Hulk-smash your calls with style — no backdoors, no tracking, no
@@ -131,7 +131,7 @@ export default function Home() {
                   >
                     {title}
                   </div>
-                  <div className="text-xs" style={{ color: "#6b7280" }}>
+                  <div className="text-xs" style={{ color: "#8aa0bb" }}>
                     {desc}
                   </div>
                 </div>

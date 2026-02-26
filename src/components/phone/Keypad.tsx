@@ -55,7 +55,7 @@ export default function Keypad({
       >
         <span className="flex-1 text-center overflow-hidden text-ellipsis">
           {dtmfBuffer || (
-            <span style={{ color: "#374151" }}>Enter digits...</span>
+            <span style={{ color: "#4a6080" }}>Enter digits...</span>
           )}
         </span>
         <div className="flex gap-1 ml-2">
@@ -111,7 +111,7 @@ export default function Keypad({
             {sub && (
               <span
                 className="text-[9px] tracking-widest leading-none"
-                style={{ color: "#4b5563" }}
+                style={{ color: "#6a8aaa" }}
               >
                 {sub}
               </span>

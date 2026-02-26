@@ -4,6 +4,9 @@ import React, { useState, useEffect } from "react";
 import type { SIPConfig } from "@/lib/useSIP";
 import type { ViciDialConfig } from "@/lib/useViciDial";
 
+// Label style helper for consistent high-contrast labels
+const labelStyle = { color: "#94a3b8" } as const;
+
 interface SettingsPanelProps {
   sipConfig: SIPConfig;
   viciConfig: ViciDialConfig;
@@ -119,7 +122,7 @@ export default function SettingsPanel({
 
           <div className="grid grid-cols-3 gap-2">
             <div className="col-span-2">
-              <label className="text-xs mb-1 block" style={{ color: "#6b7280" }}>
+              <label className="text-xs mb-1 block font-bold" style={{ color: "#94a3b8" }}>
                 Server / Host
               </label>
               <input
@@ -133,7 +136,7 @@ export default function SettingsPanel({
               />
             </div>
             <div>
-              <label className="text-xs mb-1 block" style={{ color: "#6b7280" }}>
+              <label className="text-xs mb-1 block font-bold" style={{ color: "#94a3b8" }}>
                 WS Port
               </label>
               <input
@@ -150,7 +153,7 @@ export default function SettingsPanel({
 
           <div className="grid grid-cols-2 gap-2">
             <div>
-              <label className="text-xs mb-1 block" style={{ color: "#6b7280" }}>
+              <label className="text-xs mb-1 block font-bold" style={{ color: "#94a3b8" }}>
                 SIP Username
               </label>
               <input
@@ -165,7 +168,7 @@ export default function SettingsPanel({
               />
             </div>
             <div>
-              <label className="text-xs mb-1 block" style={{ color: "#6b7280" }}>
+              <label className="text-xs mb-1 block font-bold" style={{ color: "#94a3b8" }}>
                 Extension
               </label>
               <input
@@ -181,7 +184,7 @@ export default function SettingsPanel({
           </div>
 
           <div>
-            <label className="text-xs mb-1 block" style={{ color: "#6b7280" }}>
+            <label className="text-xs mb-1 block font-bold" style={{ color: "#94a3b8" }}>
               SIP Password
             </label>
             <input
@@ -197,7 +200,7 @@ export default function SettingsPanel({
           </div>
 
           <div>
-            <label className="text-xs mb-1 block" style={{ color: "#6b7280" }}>
+            <label className="text-xs mb-1 block font-bold" style={{ color: "#94a3b8" }}>
               SIP Realm / Domain (optional)
             </label>
             <input
@@ -212,7 +215,7 @@ export default function SettingsPanel({
           </div>
 
           <div>
-            <label className="text-xs mb-1 block" style={{ color: "#6b7280" }}>
+            <label className="text-xs mb-1 block font-bold" style={{ color: "#94a3b8" }}>
               STUN Server (optional)
             </label>
             <input
@@ -294,7 +297,7 @@ export default function SettingsPanel({
           </div>
 
           <div>
-            <label className="text-xs mb-1 block" style={{ color: "#6b7280" }}>
+            <label className="text-xs mb-1 block font-bold" style={{ color: "#94a3b8" }}>
               Server URL
             </label>
             <input
@@ -310,7 +313,7 @@ export default function SettingsPanel({
 
           <div className="grid grid-cols-2 gap-2">
             <div>
-              <label className="text-xs mb-1 block" style={{ color: "#6b7280" }}>
+              <label className="text-xs mb-1 block font-bold" style={{ color: "#94a3b8" }}>
                 Agent Username
               </label>
               <input
@@ -325,7 +328,7 @@ export default function SettingsPanel({
               />
             </div>
             <div>
-              <label className="text-xs mb-1 block" style={{ color: "#6b7280" }}>
+              <label className="text-xs mb-1 block font-bold" style={{ color: "#94a3b8" }}>
                 Agent Password
               </label>
               <input
@@ -342,7 +345,7 @@ export default function SettingsPanel({
           </div>
 
           <div>
-            <label className="text-xs mb-1 block" style={{ color: "#6b7280" }}>
+            <label className="text-xs mb-1 block font-bold" style={{ color: "#94a3b8" }}>
               Campaign
             </label>
             <input
@@ -358,7 +361,7 @@ export default function SettingsPanel({
 
           <div className="grid grid-cols-2 gap-2">
             <div>
-              <label className="text-xs mb-1 block" style={{ color: "#6b7280" }}>
+              <label className="text-xs mb-1 block font-bold" style={{ color: "#94a3b8" }}>
                 Phone Login
               </label>
               <input
@@ -372,7 +375,7 @@ export default function SettingsPanel({
               />
             </div>
             <div>
-              <label className="text-xs mb-1 block" style={{ color: "#6b7280" }}>
+              <label className="text-xs mb-1 block font-bold" style={{ color: "#94a3b8" }}>
                 Phone Pass
               </label>
               <input
@@ -389,7 +392,7 @@ export default function SettingsPanel({
           </div>
 
           <div>
-            <label className="text-xs mb-1 block" style={{ color: "#6b7280" }}>
+            <label className="text-xs mb-1 block font-bold" style={{ color: "#94a3b8" }}>
               Phone Extension
             </label>
             <input
@@ -444,7 +447,7 @@ export default function SettingsPanel({
           className="w-3 h-3"
           style={{ accentColor: "var(--hulk-green)" }}
         />
-        <span className="text-xs" style={{ color: "#6b7280" }}>
+        <span className="text-xs" style={{ color: "#94a3b8" }}>
           Show passwords
         </span>
       </label>

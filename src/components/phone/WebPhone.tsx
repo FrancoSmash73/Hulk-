@@ -107,11 +107,12 @@ export default function WebPhone() {
         maxHeight: "90vh",
         borderRadius: "16px",
         overflow: "hidden",
-        border: "1px solid #1f2937",
+        border: "1px solid #2d3f55",
         boxShadow:
-          "0 0 30px rgba(0,255,65,0.1), 0 0 60px rgba(0,0,0,0.8), inset 0 0 30px rgba(0,0,0,0.5)",
+          "0 0 40px rgba(0,255,65,0.15), 0 0 80px rgba(0,0,0,0.9), inset 0 0 30px rgba(0,0,0,0.5)",
         fontFamily: "'Courier New', monospace",
         position: "relative",
+        color: "#f0f6ff",
       }}
     >
       {/* Header */}
@@ -156,8 +157,8 @@ export default function WebPhone() {
               HULK PHONE
             </div>
             <div
-              className="text-[9px] tracking-widest"
-              style={{ color: "#374151" }}
+              className="text-[9px] tracking-widest font-bold"
+              style={{ color: "#6b8aaa" }}
             >
               VICIDIAL WEBPHONE
             </div>
@@ -203,7 +204,7 @@ export default function WebPhone() {
             <span
               className="text-[9px] font-bold tracking-wider"
               style={{
-                color: sip.isRegistered ? "var(--hulk-green)" : "#374151",
+                color: sip.isRegistered ? "var(--hulk-green)" : "#6b8aaa",
               }}
             >
               SIP
@@ -260,7 +261,7 @@ export default function WebPhone() {
           {/* Tab Navigation */}
           <div
             className="flex mx-3 mt-3 rounded-xl overflow-hidden flex-shrink-0"
-            style={{ border: "1px solid #1f2937" }}
+            style={{ border: "1px solid #2d3f55" }}
           >
             {tabs.map((tab) => (
               <button
@@ -270,16 +271,20 @@ export default function WebPhone() {
                 style={{
                   background:
                     activeTab === tab.id
-                      ? "rgba(0,255,65,0.1)"
+                      ? "rgba(0,255,65,0.12)"
                       : "rgba(0,0,0,0.3)",
                   color:
                     activeTab === tab.id
                       ? "var(--hulk-green)"
-                      : "#4b5563",
+                      : "#8aa0bb",
                   borderBottom:
                     activeTab === tab.id
                       ? "2px solid var(--hulk-green)"
                       : "2px solid transparent",
+                  textShadow:
+                    activeTab === tab.id
+                      ? "0 0 6px var(--hulk-green)"
+                      : "none",
                 }}
               >
                 <span>{tab.icon}</span>
@@ -500,25 +505,25 @@ export default function WebPhone() {
           <div
             className="px-4 py-2 flex items-center justify-between flex-shrink-0"
             style={{
-              borderTop: "1px solid #1f2937",
+              borderTop: "1px solid #2d3f55",
               background: "rgba(0,0,0,0.5)",
             }}
           >
-            <div className="text-[9px] tracking-widest" style={{ color: "#1f2937" }}>
+            <div className="text-[9px] tracking-widest font-bold" style={{ color: "#4a6080" }}>
               HULKPHONE v1.0
             </div>
             <div className="flex items-center gap-2">
               {sip.callState === "connected" && (
                 <div
                   className="text-[9px] font-bold tracking-widest"
-                  style={{ color: "#ffaa00" }}
+                  style={{ color: "#ffcc00", textShadow: "0 0 6px #ffaa00" }}
                 >
                   ● LIVE
                 </div>
               )}
               <div
-                className="text-[9px] tracking-widest"
-                style={{ color: "#1f2937" }}
+                className="text-[9px] tracking-widest font-bold"
+                style={{ color: "#4a6080" }}
               >
                 VICIDIAL AGC
               </div>
