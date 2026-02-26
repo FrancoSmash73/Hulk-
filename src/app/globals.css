@@ -1,1 +1,321 @@
 @import "tailwindcss";
+
+/* Hulk/Anime Theme Variables */
+:root {
+  --hulk-green: #00ff41;
+  --hulk-green-dark: #00cc33;
+  --hulk-green-glow: #39ff14;
+  --hulk-purple: #7b2d8b;
+  --hulk-purple-dark: #4a0e5c;
+  --hulk-purple-light: #b44fd4;
+  --hulk-rage: #ff4500;
+  --hulk-bg: #0a0a0f;
+  --hulk-panel: #0d1117;
+  --hulk-card: #111827;
+  --hulk-border: #1f2937;
+  --hulk-text: #e2e8f0;
+  --hulk-muted: #6b7280;
+}
+
+/* Anime-style glow effects */
+@keyframes hulk-pulse {
+  0%, 100% { box-shadow: 0 0 5px var(--hulk-green), 0 0 10px var(--hulk-green), 0 0 20px var(--hulk-green-dark); }
+  50% { box-shadow: 0 0 10px var(--hulk-green-glow), 0 0 25px var(--hulk-green-glow), 0 0 50px var(--hulk-green); }
+}
+
+@keyframes hulk-rage-pulse {
+  0%, 100% { box-shadow: 0 0 5px var(--hulk-rage), 0 0 10px var(--hulk-rage); }
+  50% { box-shadow: 0 0 15px var(--hulk-rage), 0 0 30px var(--hulk-rage), 0 0 60px #ff6600; }
+}
+
+@keyframes purple-glow {
+  0%, 100% { box-shadow: 0 0 5px var(--hulk-purple), 0 0 15px var(--hulk-purple-dark); }
+  50% { box-shadow: 0 0 10px var(--hulk-purple-light), 0 0 30px var(--hulk-purple), 0 0 50px var(--hulk-purple-dark); }
+}
+
+@keyframes scan-line {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  92% { opacity: 1; }
+  93% { opacity: 0.8; }
+  94% { opacity: 1; }
+  96% { opacity: 0.9; }
+  97% { opacity: 1; }
+}
+
+@keyframes power-on {
+  0% { opacity: 0; transform: scaleY(0.02); filter: brightness(3); }
+  30% { opacity: 1; transform: scaleY(1); filter: brightness(2); }
+  100% { opacity: 1; transform: scaleY(1); filter: brightness(1); }
+}
+
+@keyframes ring-pulse {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.15); opacity: 0.7; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes slide-in-right {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slide-in-left {
+  from { transform: translateX(-100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes fade-in-up {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes number-scroll {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-100%); }
+}
+
+@keyframes energy-wave {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Hulk smash button effect */
+@keyframes smash {
+  0% { transform: scale(1); }
+  30% { transform: scale(0.92); }
+  60% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* CRT scanline overlay */
+.crt-overlay::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 255, 65, 0.015) 2px,
+    rgba(0, 255, 65, 0.015) 4px
+  );
+  pointer-events: none;
+  z-index: 1000;
+}
+
+/* Anime-style border glow */
+.hulk-border-glow {
+  border: 1px solid var(--hulk-green);
+  box-shadow: 0 0 5px var(--hulk-green), inset 0 0 5px rgba(0, 255, 65, 0.1);
+}
+
+.hulk-border-purple {
+  border: 1px solid var(--hulk-purple-light);
+  box-shadow: 0 0 5px var(--hulk-purple), inset 0 0 5px rgba(123, 45, 139, 0.2);
+}
+
+/* Anime text glow */
+.text-glow-green {
+  text-shadow: 0 0 5px var(--hulk-green), 0 0 10px var(--hulk-green-dark);
+}
+
+.text-glow-purple {
+  text-shadow: 0 0 5px var(--hulk-purple-light), 0 0 10px var(--hulk-purple);
+}
+
+.text-glow-rage {
+  text-shadow: 0 0 5px var(--hulk-rage), 0 0 10px #ff6600;
+}
+
+/* Hulk button styles */
+.btn-hulk {
+  background: linear-gradient(135deg, #00cc33, #007722);
+  border: 1px solid var(--hulk-green);
+  color: #000;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  transition: all 0.15s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-hulk::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent, rgba(0, 255, 65, 0.3), transparent);
+  transform: rotate(45deg) translateX(-100%);
+  transition: transform 0.4s ease;
+}
+
+.btn-hulk:hover::before {
+  transform: rotate(45deg) translateX(100%);
+}
+
+.btn-hulk:hover {
+  animation: hulk-pulse 1s infinite;
+  background: linear-gradient(135deg, #00ff41, #00cc33);
+}
+
+.btn-hulk:active {
+  animation: smash 0.2s ease;
+}
+
+.btn-rage {
+  background: linear-gradient(135deg, #cc3300, #881100);
+  border: 1px solid var(--hulk-rage);
+  color: #fff;
+}
+
+.btn-rage:hover {
+  animation: hulk-rage-pulse 0.8s infinite;
+  background: linear-gradient(135deg, #ff4500, #cc3300);
+}
+
+.btn-purple {
+  background: linear-gradient(135deg, #7b2d8b, #4a0e5c);
+  border: 1px solid var(--hulk-purple-light);
+  color: #fff;
+}
+
+.btn-purple:hover {
+  animation: purple-glow 1s infinite;
+  background: linear-gradient(135deg, #9b3dab, #6b1e7c);
+}
+
+/* Anime-style panel */
+.hulk-panel {
+  background: linear-gradient(135deg, #0d1117 0%, #111827 50%, #0d1117 100%);
+  border: 1px solid #1f2937;
+  position: relative;
+  overflow: hidden;
+}
+
+.hulk-panel::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--hulk-green), transparent);
+  opacity: 0.6;
+}
+
+/* Status indicator */
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.status-dot.active {
+  background: var(--hulk-green);
+  animation: hulk-pulse 2s infinite;
+}
+
+.status-dot.ringing {
+  background: #ffaa00;
+  animation: ring-pulse 0.5s infinite;
+}
+
+.status-dot.busy {
+  background: var(--hulk-rage);
+  animation: hulk-rage-pulse 1s infinite;
+}
+
+.status-dot.offline {
+  background: var(--hulk-muted);
+}
+
+/* Keypad button */
+.keypad-btn {
+  background: linear-gradient(135deg, #1a2332, #0f1923);
+  border: 1px solid #2d3748;
+  color: var(--hulk-green);
+  font-family: 'Courier New', monospace;
+  transition: all 0.1s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.keypad-btn:hover {
+  background: linear-gradient(135deg, #1f2d3d, #162030);
+  border-color: var(--hulk-green);
+  box-shadow: 0 0 8px rgba(0, 255, 65, 0.4);
+  color: var(--hulk-green-glow);
+}
+
+.keypad-btn:active {
+  transform: scale(0.95);
+  background: linear-gradient(135deg, #00cc33, #007722);
+  color: #000;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0a0f;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--hulk-green-dark);
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--hulk-green);
+}
+
+/* Anime-style input */
+.hulk-input {
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid #2d3748;
+  color: var(--hulk-green);
+  font-family: 'Courier New', monospace;
+  transition: all 0.2s ease;
+}
+
+.hulk-input:focus {
+  outline: none;
+  border-color: var(--hulk-green);
+  box-shadow: 0 0 8px rgba(0, 255, 65, 0.3);
+}
+
+.hulk-input::placeholder {
+  color: #374151;
+}
+
+/* Power animation */
+.power-on {
+  animation: power-on 0.5s ease-out;
+}
+
+/* Flicker effect */
+.flicker {
+  animation: flicker 8s infinite;
+}
+
+/* Energy gradient background */
+.energy-bg {
+  background: linear-gradient(270deg, #0a0a0f, #0d1a0d, #0a0a0f, #1a0d1a);
+  background-size: 400% 400%;
+  animation: energy-wave 8s ease infinite;
+}

@@ -1,11 +1,6 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist_Mono } from "next/font/google";
 import "./globals.css";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
@@ -13,8 +8,10 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Next.js Template",
-  description: "A minimal Next.js starter template",
+  title: "HulkPhone - ViciDial WebPhone",
+  description:
+    "Hulk-themed WebRTC softphone for ViciDial AGC agents. Open source, no backdoors, anime style.",
+  keywords: ["vicidial", "webphone", "webrtc", "sip", "softphone", "hulk"],
 };
 
 export default function RootLayout({
@@ -25,7 +22,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistMono.variable} antialiased`}
+        style={{
+          background: "var(--hulk-bg)",
+          color: "var(--hulk-text)",
+          fontFamily: "var(--font-geist-mono), 'Courier New', monospace",
+          margin: 0,
+          padding: 0,
+        }}
       >
         {children}
       </body>
