@@ -2,9 +2,9 @@
 
 ## Current State
 
-**Template Status**: ✅ Ready for development
+**Project Status**: ✅ HulkPhone ViciDial WebPhone — Built & Deployed
 
-The template is a clean Next.js 16 starter with TypeScript and Tailwind CSS 4. It's ready for AI-assisted expansion to build any type of application.
+A full-featured WebRTC softphone for ViciDial AGC agents with Hulk/anime theme.
 
 ## Recently Completed
 
@@ -14,23 +14,45 @@ The template is a clean Next.js 16 starter with TypeScript and Tailwind CSS 4. I
 - [x] ESLint configuration
 - [x] Memory bank documentation
 - [x] Recipe system for common features
+- [x] HulkPhone WebRTC softphone with Hulk/anime theme
+- [x] SIP/WebRTC integration via JsSIP (open source, MIT)
+- [x] ViciDial AGC integration (iframe + inject script)
+- [x] Full call controls: answer, hangup, hold, mute, transfer, DTMF
+- [x] Agent status panel with pause codes
+- [x] Call log with callback
+- [x] Settings panel (SIP + ViciDial config, localStorage)
+- [x] API proxy route with action whitelist
+- [x] Zero backdoors, no telemetry
 
 ## Current Structure
 
 | File/Directory | Purpose | Status |
 |----------------|---------|--------|
-| `src/app/page.tsx` | Home page | ✅ Ready |
-| `src/app/layout.tsx` | Root layout | ✅ Ready |
-| `src/app/globals.css` | Global styles | ✅ Ready |
+| `src/app/page.tsx` | Landing page with live demo | ✅ Ready |
+| `src/app/layout.tsx` | Root layout (dark/mono) | ✅ Ready |
+| `src/app/globals.css` | Hulk/anime theme + animations | ✅ Ready |
+| `src/app/embed/page.tsx` | Embed page for iframe use | ✅ Ready |
+| `src/app/embed/EmbedPhone.tsx` | postMessage bridge | ✅ Ready |
+| `src/app/api/vicidial/route.ts` | ViciDial API proxy | ✅ Ready |
+| `src/components/phone/WebPhone.tsx` | Main phone UI | ✅ Ready |
+| `src/components/phone/WebPhoneWrapper.tsx` | Dynamic import wrapper | ✅ Ready |
+| `src/components/phone/Keypad.tsx` | DTMF keypad | ✅ Ready |
+| `src/components/phone/CallControls.tsx` | Call action buttons | ✅ Ready |
+| `src/components/phone/AgentStatus.tsx` | Agent status panel | ✅ Ready |
+| `src/components/phone/CallLog.tsx` | Call history | ✅ Ready |
+| `src/components/phone/SettingsPanel.tsx` | SIP + ViciDial config | ✅ Ready |
+| `src/lib/useSIP.ts` | SIP/WebRTC hook (JsSIP) | ✅ Ready |
+| `src/lib/useViciDial.ts` | ViciDial AGC API hook | ✅ Ready |
+| `public/hulkphone-inject.js` | ViciDial page inject script | ✅ Ready |
 | `.kilocode/` | AI context & recipes | ✅ Ready |
 
 ## Current Focus
 
-The template is ready. Next steps depend on user requirements:
-
-1. What type of application to build
-2. What features are needed
-3. Design/branding preferences
+HulkPhone is complete. To use it with ViciDial:
+1. Deploy this Next.js app to a server
+2. Add `<script src="https://your-server/hulkphone-inject.js"></script>` to ViciDial AGC page
+3. Or embed via `<iframe src="https://your-server/embed">`
+4. Configure SIP server and ViciDial credentials in the Settings tab
 
 ## Quick Start Guide
 
