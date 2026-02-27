@@ -12,6 +12,11 @@ import SettingsPanel from "./SettingsPanel";
 
 type Tab = "phone" | "keypad" | "log" | "settings";
 
+interface WebPhoneProps {
+  /** Initial SIP config to use (e.g., from ViciDial URL params) */
+  initialSIPConfig?: Partial<SIPConfig>;
+}
+
 const DEFAULT_SIP_CONFIG: SIPConfig = {
   server: "",
   port: "8089",
@@ -34,15 +39,38 @@ const DEFAULT_VICI_CONFIG: ViciDialConfig = {
   phonePass: "",
 };
 
-export default function WebPhone() {
+export default function WebPhone({ initialSIPConfig }: WebPhoneProps) {
   const [activeTab, setActiveTab] = useState<Tab>("phone");
   const [dialNumber, setDialNumber] = useState("");
-  const [sipConfig, setSIPConfig] = useState<SIPConfig>(DEFAULT_SIP_CONFIG);
+  const [sipConfig, setSIPConfig] = useState<SIPConfig>(() => {
+    // Merge initial config with defaults
+    if (initialSIPConfig) {
+      return { ...DEFAULT_SIP_CONFIG, ...initialSIPConfig };
+    }
+    return DEFAULT_SIP_CONFIG;
+  });
   const [viciConfig, setViciConfig] = useState<ViciDialConfig>(DEFAULT_VICI_CONFIG);
   const [isMinimized, setIsMinimized] = useState(false);
   const [powerOn, setPowerOn] = useState(false);
 
   const sip = useSIP();
+  const hasAutoRegistered = React.useRef(false);
+
+  // Auto-register when initialSIPConfig is provided (run once on mount)
+  useEffect(() => {
+    // Skip if already registered or no initial config
+    if (hasAutoRegistered.current) return;
+    if (!initialSIPConfig?.server || !initialSIPConfig?.username) return;
+    
+    hasAutoRegistered.current = true;
+    
+    // Small delay to ensure SIP hook is ready
+    const timer = setTimeout(() => {
+      sip.register(sipConfig);
+    }, 500);
+    
+    return () => clearTimeout(timer);
+  }, [initialSIPConfig, sip, sipConfig]);
 
   // Power-on animation
   useEffect(() => {
