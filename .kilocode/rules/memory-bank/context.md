@@ -26,6 +26,7 @@ A full-featured WebRTC softphone for ViciDial AGC agents with Hulk/anime theme.
 - [x] **FIXED**: Added WebSocket transport event handlers for debugging connection issues
 - [x] **FIXED**: Added configurable WebSocket path (common: /ws, /sip, /asterisk/ws)
 - [x] **FIXED**: Improved error messages with HTTP status codes
+- [x] **STYLING**: Made WebPhone container slimmer (340px) with more rounded corners (24px)
 
 ## Current Structure
 

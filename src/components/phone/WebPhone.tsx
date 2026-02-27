@@ -103,10 +103,10 @@ export default function WebPhone() {
     <div
       className={`flex flex-col energy-bg crt-overlay flicker ${powerOn ? "power-on" : "opacity-0"}`}
       style={{
-        width: "360px",
+        width: "340px",
         minHeight: isMinimized ? "auto" : "600px",
         maxHeight: "90vh",
-        borderRadius: "16px",
+        borderRadius: "24px",
         overflow: "hidden",
         border: "1px solid #2d3f55",
         boxShadow:
