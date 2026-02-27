@@ -256,6 +256,24 @@ export default function SettingsPanel({
             </label>
           </div>
 
+          <div>
+            <label className="text-xs mb-1 block font-bold" style={{ color: "#94a3b8" }}>
+              WebSocket Path
+            </label>
+            <input
+              type="text"
+              value={localSIP.wsPath}
+              onChange={(e) =>
+                setLocalSIP({ ...localSIP, wsPath: e.target.value })
+              }
+              placeholder="/ws"
+              className={inputClass}
+            />
+            <span className="text-xs" style={{ color: "#6b7280" }}>
+              Common: /ws, /sip, /asterisk/ws
+            </span>
+          </div>
+
           {/* Connection Status */}
           <div
             className="rounded-lg px-3 py-2 flex items-center gap-2"

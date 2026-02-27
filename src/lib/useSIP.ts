@@ -28,6 +28,7 @@ export interface SIPConfig {
   extension: string;
   realm: string;
   useWSS: boolean;
+  wsPath: string; // WebSocket path (e.g., "/ws", "/sip", or "/")
   stunServer: string;
 }
 
@@ -210,7 +211,8 @@ export function useSIP(): SIPState & SIPActions {
         }
 
         const wsProtocol = config.useWSS ? "wss" : "ws";
-        const wsUri = `${wsProtocol}://${config.server}:${config.port}/ws`;
+        const wsPath = config.wsPath || "/ws";
+        const wsUri = `${wsProtocol}://${config.server}:${config.port}${wsPath}`;
 
         const socket = new (
           JsSIP["WebSocketInterface"] as new (uri: string) => unknown
@@ -264,11 +266,38 @@ export function useSIP(): SIPState & SIPActions {
         });
 
         ua.on("registrationFailed", (data: unknown) => {
-          const d = data as { cause?: string };
+          const d = data as { cause?: string; response?: { status_code?: number } };
           updateState({
             callState: "error",
             isRegistered: false,
-            errorMessage: `Registration failed: ${d?.cause || "Unknown error"}`,
+            errorMessage: `Registration failed: ${d?.cause || "Unknown error"} (${d?.response?.status_code || "?"})`,
+          });
+        });
+
+        // Transport event handlers for WebSocket debugging
+        ua.on("transport:connecting", () => {
+          updateState({ callState: "registering", errorMessage: "Connecting to SIP server..." });
+        });
+
+        ua.on("transport:connected", () => {
+          updateState({ errorMessage: "Transport connected, registering..." });
+        });
+
+        ua.on("transport:disconnected", (data: unknown) => {
+          const d = data as { message?: string };
+          updateState({ 
+            callState: "error", 
+            errorMessage: `Disconnected: ${d?.message || "Connection lost"}`,
+            isRegistered: false,
+            agentStatus: "offline"
+          });
+        });
+
+        ua.on("transport:error", (data: unknown) => {
+          const d = data as { message?: string };
+          updateState({ 
+            callState: "error", 
+            errorMessage: `Transport error: ${d?.message || "Unknown error"}` 
           });
         });
 

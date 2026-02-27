@@ -20,6 +20,7 @@ const DEFAULT_SIP_CONFIG: SIPConfig = {
   extension: "",
   realm: "",
   useWSS: true,
+  wsPath: "/ws",
   stunServer: "stun:stun.l.google.com:19302",
 };
 
