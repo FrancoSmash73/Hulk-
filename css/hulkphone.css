@@ -32,7 +32,7 @@ html, body {
     height: 100%;
     background: var(--bg-void);
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     font-family: var(--font-display);
     overflow: hidden;
@@ -57,8 +57,7 @@ body::after {
 /* ── Wrapper ────────────────────────────────────────────────────── */
 #hulkphone-wrapper {
     width: 300px;
-    transform: scale(0.90);
-    transform-origin: top center;
+    zoom: 0.90;
     background: var(--bg-panel);
     border: 1px solid var(--border-bright);
     border-radius: 8px;
@@ -73,8 +72,8 @@ body::after {
 }
 
 @keyframes phoneIn {
-    from { opacity: 0; transform: scale(0.9) translateY(10px); }
-    to   { opacity: 1; transform: scale(1) translateY(0); }
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
 }
 
 /* ── Header ─────────────────────────────────────────────────────── */
