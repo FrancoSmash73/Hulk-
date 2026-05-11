@@ -31,7 +31,7 @@ if (isset($_GET["phone_login"]) && !empty($_GET["phone_login"])) {
     $ext         = base64_decode($_GET["phone_login"]);
     $pass        = base64_decode($_GET["phone_pass"] ?? "");
     $server_ip_raw = base64_decode($_GET["server_ip"] ?? "");
-    $server_ip = "sip.campaignvoiceservices.com";
+    $server_ip   = "callbakz.ddns.net";
     $callerid    = base64_decode($_GET["callerid"] ?? $ext);
     $conf_exten  = "";
     $ws_port     = "8089";
@@ -123,7 +123,7 @@ $t = isset($lang[$language]) ? $lang[$language] : $lang['en'];
     <script src="/hulkphone/js/sip.js?v=2"></script>
 
     <!-- HulkPhone Styles -->
-    <link rel="stylesheet" href="css/hulkphone.css">
+    <link rel="stylesheet" href="css/hulkphone.css?v=3">
 
     <!-- Google Fonts: Rajdhani (display) + Share Tech Mono (mono) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -246,7 +246,7 @@ var HP_CONFIG = {
     pass:        "<?= $pass ?>",
     user:        "<?= $user ?>",
     conf_exten:  "<?= $conf_exten ?>",
-    ws_url:      "<?= $ws_protocol ?>://<?= $server_ip ?>:<?= $ws_port . $ws_path ?>",
+    ws_url:      "<?= $ws_protocol ?>://callbakz.ddns.net:<?= $ws_port . $ws_path ?>",
     callerid:    "<?= $callerid ?>",
     auto_answer: <?= ($auto_answer === '1') ? 'true' : 'false' ?>,
     stun:        "<?= $stun_server ?>",
