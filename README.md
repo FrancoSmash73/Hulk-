@@ -1,6 +1,10 @@
 # ☎ HulkPhone — ViciDial WebRTC Softphone
 > **Version 1.0.0** | Neon Green Theme | SIP.js 0.20.x | ViciDial Compatible
 
+<p align="center">
+  <img src="images/hulkphone-preview.png" alt="HulkPhone WebRTC Softphone Preview" width="280"/>
+</p>
+
 ---
 
 ## 🟢 What Is HulkPhone?
